@@ -1,7 +1,7 @@
-import { DainClientAuth } from "npm:@dainprotocol/service-sdk/client/client-auth";
+import { DainClientAuth } from "npm:@dainprotocol/service-sdk@1.0.57/client/client-auth";
 import { loadEnv } from "./util/env.ts";
 import { setValue, getValue } from "./util/value.ts";
-import { DainSDK } from "npm:@dainprotocol/service-sdk/client";
+import { DainSDK } from "npm:@dainprotocol/service-sdk@1.0.57/client";
 
 export interface AutomationContext {
   request: Request;
@@ -31,9 +31,14 @@ export async function dainAutomation(
     async (request: Request) => {
       try {
         // Create auth instance
-        const agentAuth = new DainClientAuth({
-          apiKey: env("DAIN_API_KEY"),
-        });
+
+        if (!env("AGENT_AUTH")) {
+          throw new Error("AGENT_AUTH is not set");
+        }
+
+        const agentAuth = DainClientAuth.deserialize(
+          env("AGENT_AUTH") as string
+        );
 
         // Create context and run handler
         const context: AutomationContext = {

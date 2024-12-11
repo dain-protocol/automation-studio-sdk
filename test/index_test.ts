@@ -3,7 +3,7 @@ import {
   assertExists,
 } from "https://deno.land/std@0.224.0/assert/mod.ts";
 import { dainAutomation } from "../src/index.ts";
-import { DainSDK } from "npm:@dainprotocol/service-sdk/client";
+import { DainSDK } from "npm:@dainprotocol/service-sdk@1.0.57/client";
 import { loadEnv } from "../src/util/env.ts";
 import { getValue, setValue } from "../src/util/value.ts";
 
