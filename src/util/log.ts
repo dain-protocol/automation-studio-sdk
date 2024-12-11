@@ -24,6 +24,7 @@ class Logger {
       body: JSON.stringify({
         message,
         level,
+        deploymentId: env("DEPLOYMENT_ID"),
       }),
     }).catch(err => {
       console.error("Failed to send log:", err);
