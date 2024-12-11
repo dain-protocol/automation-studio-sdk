@@ -1,4 +1,8 @@
-import { dainAutomation, kv , DainSDK} from "https://deno.land/x/automation@0.0.1-beta/src/index.ts";
+import {
+  dainAutomation,
+  kv,
+  DainSDK,
+} from "https://deno.land/x/automation@0.0.2-beta/src/index.ts";
 
 dainAutomation(async (context) => {
   const { agentAuth } = context;
@@ -14,7 +18,15 @@ dainAutomation(async (context) => {
     longitude: -74.006,
   });
 
+  console.log("The weather is ", weather);
+
+  const set_a_value = await kv.setValue("test", "test");
+  const get_a_value = await kv.getValue("test");
+
+  console.log("set_a_value", set_a_value);
+  console.log("get_a_value", get_a_value);
+
   return {
-    weather: weather,
+    success: true,
   };
 });

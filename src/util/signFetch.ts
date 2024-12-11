@@ -1,21 +1,24 @@
 import { ed25519 } from "npm:@noble/curves/ed25519";
-
 import base58 from "npm:bs58";
 import { loadEnv } from "./env.ts";
-import { Keypair } from 'https://esm.sh/@solana/web3.js@1.95.4';
+
 const env = await loadEnv();
 
 const triggerAddress = env("API_AUTH_ADDRESS");
-const triggerKeypair = Keypair.fromSecretKey(
-  base58.decode(env("API_AUTH_PRIVATE_KEY") as string),
-)
+const rawPrivateKey = env("API_AUTH_PRIVATE_KEY");
+
+if (!rawPrivateKey) {
+  throw new Error("API_AUTH_PRIVATE_KEY environment variable is required");
+}
+
+const privateKey = base58.decode(rawPrivateKey).slice(0, 32);
 
 export async function signData(
   data: Object,
 ): Promise<string> {
   const dataBytes = new TextEncoder().encode(JSON.stringify(data));
 
-  const sig = ed25519.sign(dataBytes, triggerKeypair.secretKey.slice(0, 32));
+  const sig = ed25519.sign(dataBytes, privateKey);
 
   return base58.encode(sig);
 }
@@ -35,7 +38,7 @@ export default async function fetcher<T>(
       method: init?.method || "POST",
       url: pathname_and_query,
       date: new Date().toISOString(),
-      nonce: Keypair.generate().publicKey.toBase58(),
+      nonce: base58.encode(ed25519.utils.randomPrivateKey().slice(0, 32)),
     };
 
     console.log("toSign", toSign);
