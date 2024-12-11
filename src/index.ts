@@ -2,10 +2,14 @@ import { DainClientAuth } from "npm:@dainprotocol/service-sdk@1.0.57/client/clie
 import { loadEnv } from "./util/env.ts";
 import { setValue, getValue } from "./util/value.ts";
 import { DainSDK } from "npm:@dainprotocol/service-sdk@1.0.57/client";
+import { logger } from "./util/log.ts";
 
 export interface AutomationContext {
   request: Request;
   agentAuth: DainClientAuth;
+  log: (message: string) => void;
+  warn: (message: string) => void;
+  error: (message: string) => void;
 }
 
 export type AutomationHandler = (
@@ -44,9 +48,15 @@ export async function dainAutomation(
         const context: AutomationContext = {
           agentAuth,
           request,
+          log: logger.log.bind(logger),
+          warn: logger.warn.bind(logger),
+          error: logger.error.bind(logger),
         };
 
         const result = await handler(context);
+
+        // Flush logs before sending response
+        await logger.flush();
 
         // If result contains an error property, return it as an error response
         if (result && typeof result === "object" && "throw" in result) {
@@ -61,6 +71,10 @@ export async function dainAutomation(
           headers: { "content-type": "application/json" },
         });
       } catch (error) {
+        // Log error before sending response
+        logger.error(error.message);
+        await logger.flush();
+        
         return new Response(JSON.stringify({ error: error.message }), {
           status: 400,
           headers: { "content-type": "application/json" },
