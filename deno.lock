@@ -4,6 +4,7 @@
     "specifiers": {
       "npm:@dainprotocol/service-sdk": "npm:@dainprotocol/service-sdk@1.0.56_zod@3.24.0_hono@4.6.13",
       "npm:@dainprotocol/service-sdk@1.0.57": "npm:@dainprotocol/service-sdk@1.0.57_zod@3.24.0_hono@4.6.13",
+      "npm:@dainprotocol/service-sdk@1.0.61": "npm:@dainprotocol/service-sdk@1.0.61_zod@3.24.0_hono@4.6.13",
       "npm:@dainprotocol/service-sdk@latest": "npm:@dainprotocol/service-sdk@1.0.56_zod@3.24.0_hono@4.6.13",
       "npm:@noble/curves": "npm:@noble/curves@1.7.0",
       "npm:@types/node": "npm:@types/node@18.16.19",
@@ -169,6 +170,37 @@
       },
       "@dainprotocol/service-sdk@1.0.57_zod@3.24.0_hono@4.6.13": {
         "integrity": "sha512-1r8h1o/ILqOSa95ugiuvvabqnZNAWkod3LpVkFUe/iRbBgYgq+ZO/J6FJ40nP5B2dJGG63efVEKW0a8BNhxRTQ==",
+        "dependencies": {
+          "@ai-sdk/anthropic": "@ai-sdk/anthropic@0.0.23_zod@3.24.0",
+          "@ai-sdk/openai": "@ai-sdk/openai@0.0.33_zod@3.24.0",
+          "@hono/node-server": "@hono/node-server@1.13.7_hono@4.6.13",
+          "@noble/curves": "@noble/curves@1.7.0",
+          "@noble/ed25519": "@noble/ed25519@2.1.0",
+          "@noble/hashes": "@noble/hashes@1.6.1",
+          "@paralleldrive/cuid2": "@paralleldrive/cuid2@2.2.2",
+          "@solana/web3.js": "@solana/web3.js@1.95.8",
+          "@stripe/stripe-js": "@stripe/stripe-js@4.10.0",
+          "@types/body-parser": "@types/body-parser@1.19.5",
+          "@types/bs58": "@types/bs58@4.0.4",
+          "@types/supertest": "@types/supertest@6.0.2",
+          "ai": "ai@3.4.33_zod@3.24.0",
+          "axios": "axios@1.7.9",
+          "body-parser": "body-parser@1.20.3",
+          "bs58": "bs58@5.0.0",
+          "express": "express@4.21.2",
+          "hono": "hono@4.6.13",
+          "ioredis": "ioredis@5.4.1",
+          "iron-session": "iron-session@8.0.4",
+          "json-schema": "json-schema@0.4.0",
+          "stripe": "stripe@17.4.0",
+          "supertest": "supertest@7.0.0",
+          "tslib": "tslib@2.8.1",
+          "zod": "zod@3.24.0",
+          "zod-to-json-schema": "zod-to-json-schema@3.23.5_zod@3.24.0"
+        }
+      },
+      "@dainprotocol/service-sdk@1.0.61_zod@3.24.0_hono@4.6.13": {
+        "integrity": "sha512-Nwm6gw9xtN0vIa4xl5r60u+9we8f99s7zWELvu5+D0q4JrQGfkGmq923W9ViAYQJRd26I8fIEJaBHiwMLCocTg==",
         "dependencies": {
           "@ai-sdk/anthropic": "@ai-sdk/anthropic@0.0.23_zod@3.24.0",
           "@ai-sdk/openai": "@ai-sdk/openai@0.0.33_zod@3.24.0",
@@ -1504,6 +1536,7 @@
     }
   },
   "redirects": {
+    "https://deno.land/std/testing/asserts.ts": "https://deno.land/std@0.224.0/testing/asserts.ts",
     "https://esm.sh/@dainprotocol/service-sdk": "https://esm.sh/@dainprotocol/service-sdk@1.0.56"
   },
   "remote": {
@@ -1536,13 +1569,16 @@
     "https://deno.land/std@0.224.0/assert/mod.ts": "48b8cb8a619ea0b7958ad7ee9376500fe902284bb36f0e32c598c3dc34cbd6f3",
     "https://deno.land/std@0.224.0/assert/unimplemented.ts": "8c55a5793e9147b4f1ef68cd66496b7d5ba7a9e7ca30c6da070c1a58da723d73",
     "https://deno.land/std@0.224.0/assert/unreachable.ts": "5ae3dbf63ef988615b93eb08d395dda771c96546565f9e521ed86f6510c29e19",
+    "https://deno.land/std@0.224.0/async/delay.ts": "f90dd685b97c2f142b8069082993e437b1602b8e2561134827eeb7c12b95c499",
     "https://deno.land/std@0.224.0/dotenv/mod.ts": "0180eaeedaaf88647318811cdaa418cc64dc51fb08354f91f5f480d0a1309f7d",
     "https://deno.land/std@0.224.0/dotenv/parse.ts": "09977ff88dfd1f24f9973a338f0f91bbdb9307eb5ff6085446e7c423e4c7ba0c",
     "https://deno.land/std@0.224.0/dotenv/stringify.ts": "275da322c409170160440836342eaa7cf012a1d11a7e700d8ca4e7f2f8aa4615",
     "https://deno.land/std@0.224.0/fmt/colors.ts": "508563c0659dd7198ba4bbf87e97f654af3c34eb56ba790260f252ad8012e1c5",
+    "https://deno.land/std@0.224.0/http/server.ts": "f9313804bf6467a1704f45f76cb6cd0a3396a3b31c316035e6a4c2035d1ea514",
     "https://deno.land/std@0.224.0/internal/diff.ts": "6234a4b493ebe65dc67a18a0eb97ef683626a1166a1906232ce186ae9f65f4e6",
     "https://deno.land/std@0.224.0/internal/format.ts": "0a98ee226fd3d43450245b1844b47003419d34d210fa989900861c79820d21c2",
     "https://deno.land/std@0.224.0/internal/mod.ts": "534125398c8e7426183e12dc255bb635d94e06d0f93c60a297723abe69d3b22e",
+    "https://deno.land/std@0.224.0/testing/asserts.ts": "d0cdbabadc49cc4247a50732ee0df1403fdcd0f95360294ad448ae8c240f3f5c",
     "https://esm.sh/@solana/web3.js@1.95.4": "375cb1f8992ef38592c5299404f17f0d6b45a53e9aff59ae6dedb09c6b282733",
     "https://esm.sh/v135/@noble/curves@1.6.0/denonext/_shortw_utils.js": "aa77d013e3579a6563b263232acb531abad2b8f9208979d84c6cbccd1f13ee9d",
     "https://esm.sh/v135/@noble/curves@1.6.0/denonext/abstract/curve.js": "8ecc3452789bdfe439b107f6240e87fac7d99694333de19eb6226bf8ad62ef5b",

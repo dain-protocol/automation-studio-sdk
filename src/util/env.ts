@@ -20,3 +20,10 @@ export async function getApiKey(): Promise<string> {
   if (!apiKey) throw new Error("API_KEY is required");
   return apiKey;
 }
+
+export const requiredEnvVars = [
+  "API_URL",
+  "DEPLOYMENT_ID",
+  "AGENT_AUTH",
+  "API_KEY",
+];
