@@ -1,6 +1,8 @@
 import { DainClientAuth } from "npm:@dainprotocol/service-sdk/client/client-auth";
 import { loadEnv } from "./util/env.ts";
 import { setValue, getValue } from "./util/value.ts";
+import { DainSDK } from "npm:@dainprotocol/service-sdk/client";
+
 export interface AutomationContext {
   request: Request;
   agentAuth: DainClientAuth;
@@ -14,6 +16,8 @@ export const kv = {
   setValue,
   getValue,
 };
+
+export { DainSDK };
 
 export async function dainAutomation(
   handler: AutomationHandler

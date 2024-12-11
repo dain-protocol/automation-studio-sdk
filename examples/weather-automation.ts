@@ -1,5 +1,4 @@
-import { dainAutomation, kv } from "../src/index.ts";
-import { DainSDK } from "npm:@dainprotocol/service-sdk/client";
+import { dainAutomation, kv , DainSDK} from "https://deno.land/x/automation@0.0.1-beta/src/index.ts";
 
 dainAutomation(async (context) => {
   const { agentAuth } = context;
@@ -19,4 +18,3 @@ dainAutomation(async (context) => {
     weather: weather,
   };
 });
-
