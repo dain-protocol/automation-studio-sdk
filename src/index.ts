@@ -1,7 +1,7 @@
 import { DainClientAuth } from "npm:@dainprotocol/service-sdk@1.0.61/client/client-auth";
 import { loadEnv } from "./util/env.ts";
 import { setValue, getValue } from "./util/value.ts";
-import { DainSDK } from "npm:@dainprotocol/service-sdk@1.0.61/client";
+import { DainSDK } from "npm:@dainprotocol/service-sdk@1.0.67/client";
 import { logger } from "./util/log.ts";
 
 export interface AutomationContext {
